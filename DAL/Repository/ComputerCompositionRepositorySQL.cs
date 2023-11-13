@@ -24,7 +24,7 @@ namespace DAL.Repository
         {
             return db.ComputerComposition.Find(id);
         }
-        public ComputerComposition GetCompByPlaceId
+   
         public void Create(ComputerComposition computercomposition)
         {
             db.ComputerComposition.Add(computercomposition);

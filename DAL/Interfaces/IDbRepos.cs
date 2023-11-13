@@ -17,7 +17,7 @@ namespace DAL.Interfaces
         IRepository<Mouse> Mouses { get; }
         IRepository<VideoCard> VideoCards { get; }
         IRepository<ComputerPlaces> Places { get; }
-
+        
 
         int Save();
     }

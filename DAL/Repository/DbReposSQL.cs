@@ -37,7 +37,7 @@ namespace DAL.Repository
                 return computerCompositionRepository;
             }
         }
-        public IRepository<ComputerPlaces> ComputerPlaces
+        public IRepository<ComputerPlaces> Places
         {
             get
             {
@@ -46,7 +46,7 @@ namespace DAL.Repository
                 return computerplacesRepository;
             }
         }
-        public IRepository<Headphones> HeadPhones
+        public IRepository<Headphones> Headphones
         {
             get
             {
@@ -127,6 +127,10 @@ namespace DAL.Repository
                     videocardRepository = new VideoCardRepositorySQL(db);
                 return videocardRepository;
             }
+        }
+        public int Save()
+        {
+            return db.SaveChanges();
         }
     }
 }

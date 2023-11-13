@@ -9,7 +9,7 @@ namespace BLL.Interfaces
 {
     public interface IReservationService
     {
-        bool MakeReservation(ReservationModel reservationDto);
+        bool MakeReservation(ReservationModel reservationDto, IAuthorizationService authorizationservice);
 
     }
 }

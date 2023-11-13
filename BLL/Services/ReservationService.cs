@@ -18,19 +18,23 @@ namespace BLL.Services
             db = repos;
 
         }
-        public bool MakeReservation(ReservationModel reservationDto)
+        public bool MakeReservation(ReservationModel reservationDto,IAuthorizationService authorizationService)
         {
             ComputerPlaces place = db.Places.GetItem(reservationDto.PlaceID);
-
+            Users curUser = db.Users.GetList().Where(i => i.Id == authorizationService.GetCurrentUser().id).FirstOrDefault();
             if (place==null)
             {
                 throw new Exception("Место не найдено");
             }
             decimal totalprice = (reservationDto.EndDateTime - reservationDto.StartDateTime).Hours * place.PricePerHour;
+            if (curUser.Balance+curUser.Bonuses < totalprice)
+            {
+                throw new Exception("Недостаточно баланса");
+            }
             Reservations reservation = new Reservations
             {
                 PlaceID = place.Id,
-                UserID = reservationDto.UserID,
+                UserID = curUser.Id,
                 Id = reservationDto.Id,
                 DateTime = reservationDto.DateTime,
                 StartDateTime = reservationDto.StartDateTime,
@@ -38,6 +42,7 @@ namespace BLL.Services
                 ReservationStatus = reservationDto.ReservationStatus,
                 TotalPrice = totalprice
             };
+            curUser.Balance = curUser.Balance - totalprice;// Минус деньги(((
             db.Reservations.Create(reservation);
             if (db.Save() > 0)
                 return true;

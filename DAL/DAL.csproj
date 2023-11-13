@@ -64,7 +64,9 @@
     <Compile Include="EntitiesCodeFirst\sysdiagrams.cs" />
     <Compile Include="EntitiesCodeFirst\Users.cs" />
     <Compile Include="EntitiesCodeFirst\VideoCard.cs" />
+    <Compile Include="Entities\Report.cs" />
     <Compile Include="Interfaces\IDbRepos.cs" />
+    <Compile Include="Interfaces\IReportRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ComputerCompositionRepositorySQL.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="Repository\MouseRepositorySQL.cs" />
     <Compile Include="Repository\ProcessorRepositorySQL.cs" />
     <Compile Include="Repository\RAMRepositorySQL.cs" />
+    <Compile Include="Repository\ReportRepositorySQL.cs" />
     <Compile Include="Repository\ReservationsRepositorySQL.cs" />
     <Compile Include="Repository\UserRepositorySQL.cs" />
     <Compile Include="Repository\VideoCardRepositorySQL.cs" />
