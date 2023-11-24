@@ -10,6 +10,7 @@ using Ninject;
 using ConstractCurs.Unit;
 using BLL;
 using System.Windows;
+using ConstractCurs.Components;
 
 namespace ConstractCurs.ViewModel
 {
@@ -22,6 +23,7 @@ namespace ConstractCurs.ViewModel
 
         private Frame MainFrame;
         private MainWindow MainWindow;
+        private SideMenu SideMenuBar;
 
         private RelayCommand navigate;
         public RelayCommand NavigateCommand
@@ -40,6 +42,53 @@ namespace ConstractCurs.ViewModel
                 }));
             }
         }
+
+        private RelayCommand sidemenu;
+        public RelayCommand SideMenuCommand
+        {
+            get
+            {
+                return sidemenu ?? (sidemenu = new RelayCommand(obj =>
+                {
+                    SideMenu();
+                }));
+            }
+        }
+        private RelayCommand sidemenuclose;
+        public RelayCommand SideMenuCloseCommand
+        {
+            get
+            {
+                return sidemenuclose ?? (sidemenuclose = new RelayCommand(obj =>
+                {
+                    SideMenuClose();
+                }));
+            }
+        }
+        private RelayCommand close;
+        public RelayCommand CloseCommand
+        {
+            get
+            {
+                return close ?? (close = new RelayCommand(obj =>
+                {
+                    CloseWindow();
+                }));
+            }
+        }
+
+        private RelayCommand maxmin;
+        public RelayCommand MaxMinCommand
+        {
+            get
+            {
+                return maxmin ?? (maxmin = new RelayCommand(obj =>
+                {
+                    MaxMinWindow();
+                }));
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
@@ -70,42 +119,66 @@ namespace ConstractCurs.ViewModel
             }
         }
 
-        /*private Visibility _notSel;
+        private Visibility _notSel;
         public Visibility NotSel
         {
-            get { return _notSel = authServ.GetCurrentUser().type != UserType.Seller ? Visibility.Visible : Visibility.Collapsed; }
+            get { return _notSel = authServ.GetCurrentUser().type != UserType.Client ? Visibility.Visible : Visibility.Collapsed; }
             set
             {
                 _notSel = value;
                 NotifyPropertyChanged("NotSel");
             }
-        }*/
+        }
 
         public void UpdateAuth()
         {
             NotifyPropertyChanged("ClientVis");
             NotifyPropertyChanged("CustomerVis");
-            /*NotifyPropertyChanged("NotSel");*/
+            NotifyPropertyChanged("NotSel");
         }
 
 
 
-        public MainViewModel( Frame mainFraim, MainWindow mainWindow)
+        public MainViewModel(SideMenu sideMenu, Frame mainFraim, MainWindow mainWindow)
         {
             MainFrame = mainFraim;
+            SideMenuBar = sideMenu;
 
             var kernel = new StandardKernel(new NinjectRegistrations(), new ServiceModule("CompClubContext"));
 
             crudServ = kernel.Get<IDbCrud>();
             resServ = kernel.Get<IReservationService>();
-            reportServ = kernel.Get<IReportService>();
+            /*reportServ = kernel.Get<IReportService>();*/
             authServ = kernel.Get<IAuthorizationService>();
 
             MainWindow = mainWindow;
+            SideMenuBar.DataContext = this;
         }
         private void NavigatetoToAuthPage()
         {
             MainFrame.Navigate(new View.AuthPage(authServ, this));
+        }
+        private void CloseWindow()
+        {
+            MainWindow.Close();
+        }
+        private void SideMenu()
+        {
+            SideMenuBar.OpenSide();
+        }
+
+        private void SideMenuClose()
+        {
+            SideMenuBar.CloseSide();
+        }
+
+
+        private void MaxMinWindow()
+        {
+            if (MainWindow.WindowState == WindowState.Maximized)
+                MainWindow.WindowState = WindowState.Normal;
+            else
+                MainWindow.WindowState = WindowState.Maximized;
         }
     }
 }

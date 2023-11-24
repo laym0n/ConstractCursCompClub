@@ -130,11 +130,10 @@ namespace ConstractCurs.ViewModel
                 {
                     var values = (object[])obj;
                     string name = (string)values[0];
-                    string sername = (string)values[1];
-                    string login = (string)values[2];
-                    PasswordBox pass = (PasswordBox)values[3];
-                    PasswordBox passcheck = (PasswordBox)values[4];
-                    if (name == null || sername == null || login == null || passcheck == null)
+                    string login = (string)values[1];
+                    PasswordBox pass = (PasswordBox)values[2];
+                    PasswordBox passcheck = (PasswordBox)values[3];
+                    if (name == null || login == null || passcheck == null)
                     {
                         var mb = new Windows.CustomMessageBox("Не все данные введены", "Ошибка регистрации");
                         mb.ShowDialog();

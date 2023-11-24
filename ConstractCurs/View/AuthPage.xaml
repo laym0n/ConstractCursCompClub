@@ -152,7 +152,6 @@
                     <Button.CommandParameter>
                         <MultiBinding Converter="{StaticResource Converter}">
                             <Binding Path="Text" ElementName="Name"/>
-                            <Binding Path="Text" ElementName="SerName"/>
                             <Binding Path="Text" ElementName="Login"/>
                             <Binding ElementName="Password"/>
                             <Binding ElementName="PasswordCheck"/>

@@ -21,9 +21,21 @@ namespace ConstractCurs
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ViewModel.MainViewModel VM;
         public MainWindow()
         {
             InitializeComponent();
+            VM = new ViewModel.MainViewModel(SideMenuBar, MainFrame, this);
+            DataContext = VM;
+        }
+        private void DragRectangle_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void SideMenuBar_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
