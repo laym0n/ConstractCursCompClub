@@ -177,7 +177,7 @@ namespace ConstractCurs.ViewModel
             if (authService.TryAuthorization(login, password))
             {
                 var u = authService.GetCurrentUser();
-                MainText = u.Name + ", Вы успешно вошли,\nкак " + (u.type == UserType.Client ? "клиент" : "продавец");
+                MainText = u.Name + ", Вы успешно вошли,\nкак " + (u.type == UserType.Client ? "клиент" : "администратор");
                 IsAuth = Visibility.Hidden;
                 IsReg = Visibility.Hidden;
                 IsIn = Visibility.Visible;
@@ -215,7 +215,7 @@ namespace ConstractCurs.ViewModel
 
         public void CloseRegister()
         {
-            MainText = "Войти в ComputerShop";
+            MainText = "Войти в ComputerClub";
             IsAuth = Visibility.Visible;
             IsReg = Visibility.Collapsed;
             IsIn = Visibility.Collapsed;

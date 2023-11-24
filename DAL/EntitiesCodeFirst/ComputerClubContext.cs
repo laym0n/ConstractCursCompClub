@@ -30,12 +30,12 @@ namespace DAL.EntitiesCodeFirst
         {
             modelBuilder.Entity<ComputerPlaces>()
                 .HasMany(e => e.ComputerComposition)
-                .WithOptional(e => e.ComputerPlaces)
+                .WithRequired(e => e.ComputerPlaces)
                 .HasForeignKey(e => e.PlaceId);
 
             modelBuilder.Entity<ComputerPlaces>()
                 .HasMany(e => e.Reservations)
-                .WithOptional(e => e.ComputerPlaces)
+                .WithRequired(e => e.ComputerPlaces)
                 .HasForeignKey(e => e.PlaceID);
 
             modelBuilder.Entity<FoodOrders>()
@@ -57,7 +57,7 @@ namespace DAL.EntitiesCodeFirst
 
             modelBuilder.Entity<Users>()
                 .HasMany(e => e.Reservations)
-                .WithOptional(e => e.Users)
+                .WithRequired(e => e.Users)
                 .HasForeignKey(e => e.UserID);
         }
     }

@@ -28,9 +28,15 @@ namespace BLL.Services
             Users user = context.Users.GetList().Where(i => i.Username == UserName).FirstOrDefault();
             if(user!=null)
             {
-                if(user.Password==Password)
+                if(user.Password==Password&&user.UserType=="Client")
                 {
                     curUser.type = UserType.Client;
+                    curUser.id = user.Id;
+                    curUser.Name = user.FirstName;
+                    return true;
+                }else if(user.Password==Password&&user.UserType=="Administrator")
+                {
+                    curUser.type = UserType.Admin;
                     curUser.id = user.Id;
                     curUser.Name = user.FirstName;
                     return true;
