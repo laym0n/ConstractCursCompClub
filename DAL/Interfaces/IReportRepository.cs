@@ -9,7 +9,7 @@ namespace DAL.Interfaces
 {
     public interface IReportsRepository
     {
-        List<Report> ExecuteSP(DateTime param1, DateTime param2);
+        List<Report> ReportReservationByMouth(DateTime param1, DateTime param2);
         List<Report> ReportAllOrdersbyClient(int idclient);
     }
 }
