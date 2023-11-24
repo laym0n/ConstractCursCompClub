@@ -11,7 +11,7 @@
       Background="{StaticResource BackgroundColor}">
 
     <Page.Resources>
-        <local:MyConverter x:Key="MyConverter"></local:MyConverter>
+        <local:Converter x:Key="Converter"></local:Converter>
     </Page.Resources>
 
     <Grid Margin="0,30,0,0">
@@ -55,7 +55,7 @@
                 Foreground="Black"
                 Background="{StaticResource OrangeColor}">
                 <Button.CommandParameter>
-                    <MultiBinding Converter="{StaticResource MyConverter}">
+                    <MultiBinding Converter="{StaticResource Converter}">
                         <Binding Path="Text" ElementName="LoginBox"/>
                         <Binding ElementName="PassBox"/>
                     </MultiBinding>
@@ -112,17 +112,6 @@
                 </Border>
 
                 <Border HorizontalAlignment="Stretch" Margin="10" CornerRadius="10" Background="{StaticResource YellowColor}" Width="auto" Height="50">
-                    <Grid MinWidth="300"  HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"  FontSize="22" Margin="10" FontWeight="Bold">Фамилия:</TextBlock>
-                        <TextBox Grid.Column="1" x:Name="SerName" FontSize="22" TextAlignment="Justify" MinWidth="230" Margin="5" MaxLength="18"/>
-                    </Grid>
-                </Border>
-
-                <Border HorizontalAlignment="Stretch" Margin="10" CornerRadius="10" Background="{StaticResource YellowColor}" Width="auto" Height="50">
                     <Grid MinWidth="300" Width="auto">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
@@ -161,7 +150,7 @@
                     Command="{Binding RegisterCommand}"
                     Background="{StaticResource OrangeColor}" >
                     <Button.CommandParameter>
-                        <MultiBinding Converter="{StaticResource MyConverter}">
+                        <MultiBinding Converter="{StaticResource Converter}">
                             <Binding Path="Text" ElementName="Name"/>
                             <Binding Path="Text" ElementName="SerName"/>
                             <Binding Path="Text" ElementName="Login"/>

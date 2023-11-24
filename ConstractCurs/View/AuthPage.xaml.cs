@@ -31,7 +31,7 @@ namespace ConstractCurs.View
         }
 
     }
-    public class MyConverter : IMultiValueConverter
+    public class Converter : IMultiValueConverter
     {
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
