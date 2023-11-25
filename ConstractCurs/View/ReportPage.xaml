@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:ConstractCurs.View"
        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
@@ -40,9 +41,9 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <TextBlock FontSize="20" Margin="10, 0" Text="От" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom"/>
-                    <DatePicker x:Name="From" Margin="0, 0, 10, 0" FontSize="20" Grid.Row="0" Grid.Column="1"/>
+                    <DatePicker x:Name="From" Margin="0, 0, 10, 0" FontSize="20" Grid.Row="0" Grid.Column="1" Focusable="False" />
                     <TextBlock FontSize="20" Margin="10, 0" Text="До" Grid.Row="1" Grid.Column="0"/>
-                    <DatePicker x:Name="To" Margin="0, 0, 10, 0" FontSize="20" Grid.Row="1" Grid.Column="1"/>
+                    <DatePicker x:Name="To" Margin="0, 0, 10, 0" FontSize="20" Grid.Row="1" Grid.Column="1" Focusable="False"/>
                 </Grid>
                 <Button Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                         Command="{Binding CalculateReport}"

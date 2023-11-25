@@ -41,6 +41,9 @@ namespace ConstractCurs.ViewModel
                         case "Report":
                             NavigatetoToReportPage();
                             break;
+                        case "Reservation":
+                            NavigatetoToReservationPage();
+                            break;
                     }
                 }));
             }
@@ -165,6 +168,11 @@ namespace ConstractCurs.ViewModel
         private void NavigatetoToReportPage()
         {
             MainFrame.Navigate(new View.ReportPage(reportServ));
+            SideMenuBar.CloseSide();
+        }
+        private void NavigatetoToReservationPage()
+        {
+            MainFrame.Navigate(new View.ReservationPage(resServ));
             SideMenuBar.CloseSide();
         }
         private void CloseWindow()

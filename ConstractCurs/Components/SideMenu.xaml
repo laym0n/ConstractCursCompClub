@@ -10,9 +10,9 @@
         <Grid >
 
             <StackPanel Orientation="Vertical" Width="250" Height="auto" Margin="5, 15" HorizontalAlignment="Center">
-                <Button Visibility="{Binding NotSel}" x:Name="CatalogButton"
+                <Button Visibility="{Binding NotSel}" x:Name="ReservationButton"
                         Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.NavigateCommand}"
-                        CommandParameter="Catalog"
+                        CommandParameter="Reservation"
                         Style="{StaticResource MaterialDesignFlatLightBgButton}" Width="200" Margin="0,0,0,10" Height="40" Cursor="Hand" materialDesign:ButtonAssist.CornerRadius="20" >
                     Бронирование
                 </Button>

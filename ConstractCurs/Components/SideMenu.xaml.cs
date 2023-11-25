@@ -30,8 +30,8 @@ namespace ConstractCurs.Components
         {
             switch (name)
             {
-                case "Catalog":
-                    return CatalogButton;
+                case "Reservation":
+                    return ReservationButton;
                 case "Busket":
                     return BusketButton;
                 case "Orders":

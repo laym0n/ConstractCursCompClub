@@ -13,7 +13,7 @@ namespace BLL.Services
     public class ReservationService:IReservationService
     {
         private IDbRepos db;
-        public ReservationService(IDbRepos repos)
+        public ReservationService(IDbRepos repos, IDbCrud dbcrud)
         {
             db = repos;
 
@@ -47,6 +47,23 @@ namespace BLL.Services
             if (db.Save() > 0)
                 return true;
             return false;
+        }
+
+        public List<ComputerPlaceModel> CheckFreeComputers(DateTime start, DateTime end)
+        {
+            List<Reservations> Res = db.Reservations.GetList().Where(r => r.StartDateTime >= start && r.EndDateTime <= end).ToList();
+
+            var OccupiedComputerIds = Res.Select(r => r.PlaceID).Distinct();
+
+            var computers = db.Places.GetList().Where(c => !OccupiedComputerIds.Contains(c.Id)).Select(c => new ComputerPlaceModel
+            {
+                Id = c.Id,
+                Name = c.Name,
+                PricePerHour = c.PricePerHour,
+                Status = c.Status
+            }).ToList();
+
+            return computers;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace BLL.Interfaces
     public interface IReservationService
     {
         bool MakeReservation(ReservationModel reservationDto, IAuthorizationService authorizationservice);
+        List<ComputerPlaceModel> CheckFreeComputers(DateTime start, DateTime end);
 
     }
 }
