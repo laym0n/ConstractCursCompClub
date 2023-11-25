@@ -14,7 +14,7 @@
                         Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.NavigateCommand}"
                         CommandParameter="Catalog"
                         Style="{StaticResource MaterialDesignFlatLightBgButton}" Width="200" Margin="0,0,0,10" Height="40" Cursor="Hand" materialDesign:ButtonAssist.CornerRadius="20" >
-                    Лента товаров
+                    Бронирование
                 </Button>
                 <Button 
                         Visibility="{Binding SellerVis}"

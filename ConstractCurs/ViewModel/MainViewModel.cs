@@ -38,6 +38,9 @@ namespace ConstractCurs.ViewModel
                         case "Auth":
                             NavigatetoToAuthPage();
                             break;
+                        case "Report":
+                            NavigatetoToReportPage();
+                            break;
                     }
                 }));
             }
@@ -157,6 +160,12 @@ namespace ConstractCurs.ViewModel
         private void NavigatetoToAuthPage()
         {
             MainFrame.Navigate(new View.AuthPage(authServ, this));
+            SideMenuBar.CloseSide();
+        }
+        private void NavigatetoToReportPage()
+        {
+            MainFrame.Navigate(new View.ReportPage(reportServ));
+            SideMenuBar.CloseSide();
         }
         private void CloseWindow()
         {
